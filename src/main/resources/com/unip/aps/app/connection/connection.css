@@ -1,0 +1,10 @@
+.btn-success {
+    -fx-border-color: #15ff49;
+    -fx-background-color: #15ff49;
+    -fx-text-fill: #003f06;
+}
+
+.default-grey {
+    -fx-border-color: #dddddd;
+    -fx-background-color: #cccccc;
+}
