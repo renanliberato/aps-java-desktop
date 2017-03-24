@@ -6,7 +6,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,7 +21,6 @@ public class Connection extends Application {
      * First screen exhibited in the application. Sets up the scene and stage settings.
      *
      * @param stage Application's stage
-     * @throws Exception Exception throwed if something goes wrong wit
      */
     public void start(Stage stage) {
         try {
