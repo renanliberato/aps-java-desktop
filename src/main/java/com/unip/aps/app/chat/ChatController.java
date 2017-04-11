@@ -29,7 +29,7 @@ public class ChatController implements Initializable {
     private Label connectionLabel;
 
     @FXML
-    private ListView chatListView;
+    private ListView<String> chatListView;
 
     private ObservableList<String> messageList = FXCollections.observableArrayList();
 
