@@ -1,0 +1,13 @@
+.list-cell:filled {
+    -fx-background-position: right;
+    -fx-padding: 10px 18px;
+    -fx-margin: 5px 45px 5px 20px;
+}
+
+.self-message {
+    -fx-background-color: #bbffa2;
+}
+
+.partner-message {
+    -fx-background-color: #f4f4f4;
+}
