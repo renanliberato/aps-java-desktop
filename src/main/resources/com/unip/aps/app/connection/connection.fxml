@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unip.aps.app.connection.ConnectionController">
+   <children>
+      <Label layoutX="302.0" layoutY="223.0" text="Conection Address">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <TextField fx:id="targetInput" alignment="CENTER" layoutX="244.0" layoutY="266.0" prefHeight="50.0" prefWidth="300.0" promptText="192.168.0.101:8008" styleClass="default-grey">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
+      <Button fx:id="connectButton" layoutX="243.0" layoutY="335.0" mnemonicParsing="false" onAction="#connectButtonAction" prefHeight="54.0" prefWidth="300.0" styleClass="btn-success" text="Connect">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
