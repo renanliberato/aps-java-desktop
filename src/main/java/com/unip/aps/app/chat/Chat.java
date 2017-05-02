@@ -2,7 +2,6 @@ package com.unip.aps.app.chat;
 
 import com.unip.aps.app.App;
 import com.unip.aps.app.alert.ErrorDialog;
-import com.unip.aps.app.service.Server;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -36,8 +35,8 @@ public class Chat extends Application {
             Scene scene = new Scene(root);
 
             //Export the css file to string and load it inside the scene.
-//            String css = this.getClass().getResource("connection.css").toExternalForm();
-//            scene.getStylesheets().add(css);
+            String css = getClass().getResource("chat.css").toExternalForm();
+            scene.getStylesheets().add(css);
 
             //Stage configuration.
             stage.setScene(scene);
@@ -48,8 +47,6 @@ public class Chat extends Application {
             //Shows the stage to the user.
             stage.show();
 
-            Server server = new Server();
-            server.listenToNewConnection();
         } catch (IOException e) {
             e.printStackTrace();
 //            new ErrorDialog();
