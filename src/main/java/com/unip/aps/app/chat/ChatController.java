@@ -1,15 +1,15 @@
 package com.unip.aps.app.chat;
 
+import com.unip.aps.app.chat.model.Message;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,9 +29,9 @@ public class ChatController implements Initializable {
     private Label connectionLabel;
 
     @FXML
-    private ListView<String> chatListView;
+    private ListView<Message> chatListView;
 
-    private ObservableList<String> messageList = FXCollections.observableArrayList();
+    private ObservableList<Message> messageList = FXCollections.observableArrayList();
 
     @FXML
     private TextField messageField;
@@ -42,15 +42,41 @@ public class ChatController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         chatListView.setItems(messageList);
+        chatListView.setCellFactory((ListView<Message> messageListView) -> new ListCell<Message>(){
+            @Override
+            protected void updateItem(Message message, boolean empty) {
+                super.updateItem(message, empty);
+
+                getStyleClass().remove("partner-message");
+                getStyleClass().remove("self-message");
+
+                if (empty) {
+                    setText(null);
+                    return;
+                }
+
+                setText(message.getText());
+                if(message.isSelf()) {
+                    getStyleClass().add("self-message");
+                    setAlignment(Pos.CENTER_RIGHT);
+                } else {
+                    getStyleClass().add("partner-message");
+                    setAlignment(Pos.CENTER_LEFT);
+                }
+            }
+        });
+
+
     }
 
     @FXML
     public void disconnectButtonAction(ActionEvent event) {
+
     }
 
     @FXML
     public void sendButtonAction(ActionEvent event) {
         String message = messageField.getText();
-        messageList.add(message);
+        messageList.add(new Message(message, true);
     }
 }
