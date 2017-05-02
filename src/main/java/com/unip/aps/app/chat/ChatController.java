@@ -2,17 +2,14 @@ package com.unip.aps.app.chat;
 
 import com.unip.aps.app.chat.model.Message;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.util.Callback;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -77,6 +74,6 @@ public class ChatController implements Initializable {
     @FXML
     public void sendButtonAction(ActionEvent event) {
         String message = messageField.getText();
-        messageList.add(new Message(message, true);
+        messageList.add(new Message(message, true));
     }
 }
