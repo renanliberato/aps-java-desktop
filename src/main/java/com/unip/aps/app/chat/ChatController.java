@@ -1,6 +1,11 @@
 package com.unip.aps.app.chat;
 
+import com.unip.aps.app.App;
+import com.unip.aps.app.alert.ErrorDialog;
 import com.unip.aps.app.chat.model.Message;
+import com.unip.aps.app.connection.Connection;
+import com.unip.aps.app.service.ConnectionHandler;
+import com.unip.aps.app.service.Enviador;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,7 +34,7 @@ public class ChatController implements Initializable {
     @FXML
     private ListView<Message> chatListView;
 
-    private ObservableList<Message> messageList = FXCollections.observableArrayList();
+    private static ObservableList<Message> messageList = FXCollections.observableArrayList();
 
     @FXML
     private TextField messageField;
@@ -68,12 +74,21 @@ public class ChatController implements Initializable {
 
     @FXML
     public void disconnectButtonAction(ActionEvent event) {
-
+        try {
+            ConnectionHandler.closeConnection();
+            new Connection().start(App.getStage());
+        } catch (IOException e) {
+            ErrorDialog.fire();
+        }
     }
 
     @FXML
     public void sendButtonAction(ActionEvent event) {
         String message = messageField.getText();
-        messageList.add(new Message(message, true));
+        Enviador.send(message);
+    }
+
+    public static void addMessage(Message message) {
+        messageList.add(message);
     }
 }
