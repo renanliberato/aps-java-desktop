@@ -1,11 +1,16 @@
 package com.unip.aps.app.connection;
 
+import com.unip.aps.app.App;
+import com.unip.aps.app.alert.ErrorDialog;
+import com.unip.aps.app.chat.Chat;
+import com.unip.aps.app.service.ConnectionHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,5 +37,11 @@ public class ConnectionController implements Initializable {
      */
     @FXML
     private void connectButtonAction(ActionEvent event) {
+        try {
+            ConnectionHandler.newConnection(targetField.getText(), 666);
+            new Chat().start(App.getStage());
+        } catch (IOException e) {
+            ErrorDialog.fire();
+        }
     }
 }

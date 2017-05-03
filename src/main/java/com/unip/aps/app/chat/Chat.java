@@ -21,13 +21,9 @@ public class Chat extends Application {
      * First screen exhibited in the application. Sets up the scene and stage settings.
      *
      * @param stage Application's stage
-     * @throws Exception Exception throwed if something goes wrong wit
      */
     public void start(Stage stage) {
         try {
-            // Set the stage to the application static property, making it available to all system classes.
-            App.setStage(stage);
-
             //Loads xml layout file.
             Parent root = FXMLLoader.load(getClass().getResource("chat.fxml"));
 
@@ -48,12 +44,7 @@ public class Chat extends Application {
             stage.show();
 
         } catch (IOException e) {
-            e.printStackTrace();
-//            new ErrorDialog();
+            ErrorDialog.fire();
         }
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
