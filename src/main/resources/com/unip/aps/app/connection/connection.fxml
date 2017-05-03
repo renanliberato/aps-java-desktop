@@ -12,7 +12,7 @@
          <font>
             <Font size="22.0" />
          </font></Label>
-      <TextField fx:id="targetInput" alignment="CENTER" layoutX="244.0" layoutY="266.0" prefHeight="50.0" prefWidth="300.0" promptText="192.168.0.101:8008" styleClass="default-grey">
+      <TextField fx:id="targetField" alignment="CENTER" layoutX="244.0" layoutY="266.0" prefHeight="50.0" prefWidth="300.0" promptText="192.168.0.101:8008" styleClass="default-grey">
          <font>
             <Font size="25.0" />
          </font></TextField>
