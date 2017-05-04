@@ -3,6 +3,7 @@ package com.unip.aps.app.connection;
 import com.unip.aps.app.App;
 import com.unip.aps.app.alert.ErrorDialog;
 import com.unip.aps.app.chat.Chat;
+import com.unip.aps.app.chat.model.User;
 import com.unip.aps.app.service.ConnectionHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,6 +26,9 @@ public class ConnectionController implements Initializable {
     private TextField targetField;
 
     @FXML
+    private TextField usernameField;
+
+    @FXML
     private Button connectButton;
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -38,6 +42,7 @@ public class ConnectionController implements Initializable {
     @FXML
     private void connectButtonAction(ActionEvent event) {
         try {
+        User.setUsername(usernameField.getText());
             ConnectionHandler.newConnection(targetField.getText(), 666);
             new Chat().start(App.getStage());
         } catch (IOException e) {
