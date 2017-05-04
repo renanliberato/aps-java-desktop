@@ -1,5 +1,7 @@
 package com.unip.aps.app.chat.model;
 
+import com.google.gson.Gson;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,15 +20,16 @@ public class Message {
 
     private String text;
 
-    private Boolean self = false;
+    private String username;
+
+    public Message(String text, String username) {
+        this.text = text;
+        this.username = username;
+    }
 
     public Message(String text) {
         this.text = text;
-    }
-
-    public Message(String text, Boolean self) {
-        this.text = text;
-        this.self = self;
+        this.username = User.getUsername();
     }
 
     public Integer getId() {
@@ -45,11 +48,30 @@ public class Message {
         this.text = text;
     }
 
-    public Boolean isSelf() {
-        return self;
+    public String getUsername() {
+        return username;
     }
 
-    public void setSelf(Boolean self) {
-        this.self = self;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return Uma string json com as propriedades do objeto que possuem valor.
+     * Ex: {text : "Olá", username : "josecouves"}
+     */
+    public String toJson() {
+        return new Gson().toJson(this);
+    }
+
+    /**
+     * Cria uma mensagem de uma string json
+     *
+     * @param json
+     *
+     * @return
+     */
+    public static Message fromJson(String json) {
+        return new Gson().fromJson(json, Message.class);
     }
 }

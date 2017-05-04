@@ -31,9 +31,9 @@ public class Recebedor implements Runnable {
         Scanner s = new Scanner(this.responseStream);
 
         while (s.hasNextLine()) {
-            String message = s.nextLine();
+            String jsonMessage = s.nextLine();
             Platform.runLater(() -> ChatController.addMessage(
-                new Message(message)
+                Message.fromJson(jsonMessage)
             ));
         }
     }

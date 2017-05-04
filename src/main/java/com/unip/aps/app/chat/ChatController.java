@@ -3,6 +3,7 @@ package com.unip.aps.app.chat;
 import com.unip.aps.app.App;
 import com.unip.aps.app.alert.ErrorDialog;
 import com.unip.aps.app.chat.model.Message;
+import com.unip.aps.app.chat.model.User;
 import com.unip.aps.app.connection.Connection;
 import com.unip.aps.app.service.ConnectionHandler;
 import com.unip.aps.app.service.Enviador;
@@ -59,7 +60,7 @@ public class ChatController implements Initializable {
                 }
 
                 setText(message.getText());
-                if(message.isSelf()) {
+                if(message.getUsername().equals(User.getUsername())) {
                     getStyleClass().add("self-message");
                     setAlignment(Pos.CENTER_RIGHT);
                 } else {
@@ -69,7 +70,7 @@ public class ChatController implements Initializable {
             }
         });
 
-
+        connectionLabel.setText("Connection with " + ConnectionHandler.getConnection().getInetAddress());
     }
 
     @FXML
@@ -85,7 +86,7 @@ public class ChatController implements Initializable {
     @FXML
     public void sendButtonAction(ActionEvent event) {
         String message = messageField.getText();
-        Enviador.send(message);
+        Enviador.send(new Message(message));
     }
 
     public static void addMessage(Message message) {

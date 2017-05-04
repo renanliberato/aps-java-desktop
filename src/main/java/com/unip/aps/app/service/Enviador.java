@@ -1,5 +1,7 @@
 package com.unip.aps.app.service;
 
+import com.unip.aps.app.chat.model.Message;
+
 import java.io.PrintStream;
 
 /**
@@ -14,8 +16,9 @@ public class Enviador {
      *
      * @param message Mensagem que deve ser enviada para o servidor.
      */
-    public static void send(String message) {
+    public static void send(Message message) {
         PrintStream stream = ConnectionHandler.getRequestStream();
-        stream.println(message);
+
+        stream.println(message.toJson());
     }
 }
