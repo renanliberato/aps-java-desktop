@@ -5,6 +5,7 @@ import com.unip.aps.app.alert.ErrorDialog;
 import com.unip.aps.app.chat.Chat;
 import com.unip.aps.app.connection.model.User;
 import com.unip.aps.app.service.ConnectionHandler;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -32,7 +33,7 @@ public class ConnectionController implements Initializable {
     private Button connectButton;
 
     public void initialize(URL location, ResourceBundle resources) {
-        usernameField.requestFocus();
+        Platform.runLater(() -> usernameField.requestFocus());
     }
 
     /**
