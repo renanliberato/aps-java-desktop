@@ -1,9 +1,5 @@
 package com.unip.aps.app.service;
 
-import com.unip.aps.app.chat.ChatController;
-import com.unip.aps.app.chat.model.Message;
-import javafx.application.Platform;
-
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -30,11 +26,12 @@ public class Recebedor implements Runnable {
         // TODO Auto-generated method stub
         Scanner s = new Scanner(this.responseStream);
 
+        RequestFilter filter = new RequestFilter();
+
         while (s.hasNextLine()) {
-            String jsonMessage = s.nextLine();
-            Platform.runLater(() -> ChatController.addMessage(
-                Message.fromJson(jsonMessage)
-            ));
+            String requestBody = s.nextLine();
+
+            filter.filter(requestBody);
         }
     }
 }

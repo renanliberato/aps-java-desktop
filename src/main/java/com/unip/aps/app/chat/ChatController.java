@@ -3,7 +3,9 @@ package com.unip.aps.app.chat;
 import com.unip.aps.app.App;
 import com.unip.aps.app.alert.ErrorDialog;
 import com.unip.aps.app.chat.model.Message;
-import com.unip.aps.app.chat.model.User;
+import com.unip.aps.app.connection.model.Request;
+import com.unip.aps.app.connection.model.RequestCode;
+import com.unip.aps.app.connection.model.User;
 import com.unip.aps.app.connection.Connection;
 import com.unip.aps.app.service.ConnectionHandler;
 import com.unip.aps.app.service.Enviador;
@@ -17,6 +19,7 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -45,6 +48,10 @@ public class ChatController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        Request request = new Request(RequestCode.MESSAGE_LIST);
+        Enviador.send(request);
+
         chatListView.setItems(messageList);
         chatListView.setCellFactory((ListView<Message> messageListView) -> new ListCell<Message>(){
             @Override
@@ -89,7 +96,22 @@ public class ChatController implements Initializable {
         Enviador.send(new Message(message));
     }
 
+    /**
+     * Adiciona a mensagem passada na ObservableList.
+     *
+     * @param message
+     */
     public static void addMessage(Message message) {
         messageList.add(message);
+    }
+
+    /**
+     * Limpa a lista de mensagens e popula o chat com uma nova lista.
+     *
+     * @param newList
+     */
+    public static void populateMessageList(List<Message> newList) {
+        messageList.clear();
+        messageList.addAll(newList);
     }
 }

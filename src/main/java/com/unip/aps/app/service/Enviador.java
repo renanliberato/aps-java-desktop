@@ -1,6 +1,8 @@
 package com.unip.aps.app.service;
 
 import com.unip.aps.app.chat.model.Message;
+import com.unip.aps.app.connection.model.Request;
+import com.unip.aps.app.connection.model.RequestCode;
 
 import java.io.PrintStream;
 
@@ -19,6 +21,18 @@ public class Enviador {
     public static void send(Message message) {
         PrintStream stream = ConnectionHandler.getRequestStream();
 
-        stream.println(message.toJson());
+        Request request = new Request(RequestCode.MESSAGE, message.toJson());
+
+        stream.println(request.toJson());
+    }
+
+    /**
+     * Envia o json da request para o servidor.
+     *
+     * @param request
+     */
+    public static void send(Request request) {
+        PrintStream stream = ConnectionHandler.getRequestStream();
+        stream.println(request.toJson());
     }
 }

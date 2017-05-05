@@ -1,4 +1,4 @@
-package com.unip.aps.app.chat.model;
+package com.unip.aps.app.connection.model;
 
 /**
  * Created on 3/5/2017.

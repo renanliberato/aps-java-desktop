@@ -1,21 +1,16 @@
 package com.unip.aps.app.chat.model;
 
 import com.google.gson.Gson;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.unip.aps.app.connection.model.User;
+import com.unip.aps.app.core.AbstractEntity;
 
 /**
  * Created on 12/4/2017.
  *
  * @author Renan Liberato Sant'Ana <renan.libsantana@gmail.com>
  */
-@Entity
-public class Message {
+public class Message extends AbstractEntity {
 
-    @Id
-    @GeneratedValue
     private Integer id;
 
     private String text;
@@ -54,14 +49,6 @@ public class Message {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    /**
-     * @return Uma string json com as propriedades do objeto que possuem valor.
-     * Ex: {text : "Olá", username : "josecouves"}
-     */
-    public String toJson() {
-        return new Gson().toJson(this);
     }
 
     /**
