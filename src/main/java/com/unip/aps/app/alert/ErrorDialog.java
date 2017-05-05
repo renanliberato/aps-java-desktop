@@ -17,4 +17,8 @@ public class ErrorDialog extends Alert {
         setContentText("Please, contact the system administrator for more information.");
         show();
     }
+
+    public static void fire() {
+        new ErrorDialog();
+    }
 }

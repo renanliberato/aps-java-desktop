@@ -46,7 +46,7 @@ public class Connection extends Application {
             //Shows the stage to the user.
             stage.show();
         } catch (IOException e) {
-            new ErrorDialog();
+            ErrorDialog.fire();
         }
     }
 
