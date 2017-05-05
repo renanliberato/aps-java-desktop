@@ -21,7 +21,10 @@
             <Font size="25.0" />
          </font>
       </Button>
-      <TextField fx:id="usernameField" layoutX="244.0" layoutY="164.0" prefHeight="50.0" prefWidth="300.0" promptText="jhonmaven" styleClass="default-grey" />
+      <TextField fx:id="usernameField" alignment="CENTER" layoutX="244.0" layoutY="164.0" prefHeight="50.0" prefWidth="300.0" promptText="jhonmaven" styleClass="default-grey">
+         <font>
+            <Font size="25.0" />
+         </font></TextField>
       <Label layoutX="345.0" layoutY="112.0" text="Username">
          <font>
             <Font size="22.0" />
