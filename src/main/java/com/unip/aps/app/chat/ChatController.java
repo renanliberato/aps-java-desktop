@@ -66,7 +66,7 @@ public class ChatController implements Initializable {
                     return;
                 }
 
-                setText(message.getText());
+                setText(message.getUsername()+":"+System.getProperty("line.separator")+message.getText());
                 if(message.getUsername().equals(User.getUsername())) {
                     getStyleClass().add("self-message");
                     setAlignment(Pos.CENTER_RIGHT);
