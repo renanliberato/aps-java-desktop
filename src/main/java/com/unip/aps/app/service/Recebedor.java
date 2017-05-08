@@ -1,5 +1,10 @@
 package com.unip.aps.app.service;
 
+import com.unip.aps.app.App;
+import com.unip.aps.app.alert.LostConnectionDialog;
+import com.unip.aps.app.connection.Connection;
+import javafx.application.Platform;
+
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -33,5 +38,11 @@ public class Recebedor implements Runnable {
 
             filter.filter(requestBody);
         }
+
+        Platform.runLater(() -> {
+            LostConnectionDialog.fire();
+            Connection  connection = new Connection();
+            connection.start(App.getStage());
+        });
     }
 }

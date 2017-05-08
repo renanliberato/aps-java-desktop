@@ -10,6 +10,14 @@ import com.unip.aps.app.connection.model.RequestCode;
  */
 public class RequestFilter {
 
+    private MessageListRequestHandler messageListRequestHandler;
+    private MessageRequestHandler messageRequestHandler;
+
+    public RequestFilter() {
+        messageRequestHandler = new MessageRequestHandler();
+        messageListRequestHandler = new MessageListRequestHandler();
+    }
+
     /**
      * Filtra a requisição vinda do servidor para o devido interpretador do cliente.
      *
@@ -20,11 +28,9 @@ public class RequestFilter {
         RequestCode requestCode = RequestCode.fromInteger(request.getCode());
         switch (requestCode) {
             case MESSAGE:
-                MessageRequestHandler messageRequestHandler = new MessageRequestHandler();
                 messageRequestHandler.execute(request);
                 break;
             case MESSAGE_LIST:
-                MessageListRequestHandler messageListRequestHandler = new MessageListRequestHandler();
                 messageListRequestHandler.execute(request);
                 break;
         }
