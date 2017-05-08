@@ -2,7 +2,6 @@ package com.unip.aps.app.connection;
 
 import com.unip.aps.app.App;
 import com.unip.aps.app.alert.ConnectionErrorDialog;
-import com.unip.aps.app.alert.ErrorDialog;
 import com.unip.aps.app.alert.FieldDialog;
 import com.unip.aps.app.chat.Chat;
 import com.unip.aps.app.connection.model.User;
@@ -13,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,6 +34,13 @@ public class ConnectionController implements Initializable {
 
     @FXML
     private Button connectButton;
+
+    @FXML
+    public void checkEnterPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            connectButton.fire();
+        }
+    }
 
     public void initialize(URL location, ResourceBundle resources) {
         Platform.runLater(() -> usernameField.requestFocus());

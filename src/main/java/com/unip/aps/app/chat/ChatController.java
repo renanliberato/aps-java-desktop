@@ -11,11 +11,12 @@ import com.unip.aps.app.service.ConnectionHandler;
 import com.unip.aps.app.service.Enviador;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,6 +46,13 @@ public class ChatController implements Initializable {
 
     @FXML
     private Button sendButton;
+
+    @FXML
+    public void checkEnterPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            sendButton.fire();
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -81,7 +89,7 @@ public class ChatController implements Initializable {
     }
 
     @FXML
-    public void disconnectButtonAction(ActionEvent event) {
+    public void disconnectButtonAction() {
         try {
             ConnectionHandler.closeConnection();
             new Connection().start(App.getStage());
@@ -91,7 +99,7 @@ public class ChatController implements Initializable {
     }
 
     @FXML
-    public void sendButtonAction(ActionEvent event) {
+    public void sendButtonAction() {
         String message = messageField.getText();
         Enviador.send(new Message(message));
     }

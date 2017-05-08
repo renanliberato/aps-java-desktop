@@ -17,7 +17,7 @@
          <font>
             <Font size="25.0" />
          </font></Label>
-      <TextField fx:id="messageField" layoutX="10.0" layoutY="536.0" prefHeight="50.0" prefWidth="600.0" promptText="My message">
+      <TextField fx:id="messageField" layoutX="10.0" layoutY="536.0" onKeyPressed="#checkEnterPressed" prefHeight="50.0" prefWidth="600.0" promptText="My message">
          <font>
             <Font size="25.0" />
          </font></TextField>
